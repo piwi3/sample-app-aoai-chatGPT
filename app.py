@@ -173,6 +173,7 @@ def prepare_body_headers_with_data(request):
                     "endpoint": f"https://{AZURE_SEARCH_SERVICE}.search.windows.net",
                     "key": AZURE_SEARCH_KEY,
                     "indexName": AZURE_SEARCH_INDEX,
+                    "apiVersion": "2020-07-01-Preview",
                     "fieldsMapping": {
                         "contentFields": AZURE_SEARCH_CONTENT_COLUMNS.split("|") if AZURE_SEARCH_CONTENT_COLUMNS else [],
                         "titleField": AZURE_SEARCH_TITLE_COLUMN if AZURE_SEARCH_TITLE_COLUMN else None,
@@ -614,4 +615,4 @@ def generate_title(conversation_messages):
         return messages[-2]['content']
 
 if __name__ == "__main__":
-    app.run()
+    app.run(host="127.0.0.1", port=8000)

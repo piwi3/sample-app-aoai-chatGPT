@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "sample-app-aoai-chatgpt"
+version = "0.1.0"
+description = ""
+authors = ["piwi3 <99548889+piwi3@users.noreply.github.com>"]
+readme = "README.md"
+packages = [{include = "sample_app_aoai_chatgpt"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+azure-identity = "1.14.0"
+flask = "2.3.2"
+openai = "0.27.7"
+azure-search-documents = "11.4.0b6"
+azure-storage-blob = "12.17.0"
+python-dotenv = "1.0.0"
+azure-cosmos = "4.5.0"
+azure-ai-formrecognizer = "3.2.1"
+markdown = "3.4.4"
+requests = "2.31.0"
+tqdm = "4.65.0"
+tiktoken = "0.4.0"
+langchain = "0.0.274"
+bs4 = "0.0.1"
+urllib3 = "2.0.4"
+pytest = "7.4.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

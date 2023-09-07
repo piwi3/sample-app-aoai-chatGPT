@@ -1,6 +1,15 @@
 #!/bin/bash
 
 echo ""
+echo "Restoring backend python packages"
+echo ""
+python -m pip install -r requirements.txt
+if [ $? -ne 0 ]; then
+    echo "Failed to restore backend python packages"
+    exit $?
+fi
+
+echo ""
 echo "Restoring frontend npm packages"
 echo ""
 cd frontend
@@ -19,13 +28,12 @@ if [ $? -ne 0 ]; then
     exit $?
 fi
 
-cd ..
-. ./scripts/loadenv.sh
-
 echo ""
 echo "Starting backend"
 echo ""
-./.venv/bin/python -m flask run --port=8000 --host=127.0.0.1 --reload --debug
+cd ..
+open http://127.0.0.1:8000
+python ./app.py
 if [ $? -ne 0 ]; then
     echo "Failed to start backend"
     exit $?
