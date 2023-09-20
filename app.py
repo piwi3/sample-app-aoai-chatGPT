@@ -158,6 +158,12 @@ def prepare_body_headers_with_data(request):
     if AZURE_SEARCH_PERMITTED_GROUPS_COLUMN:
         userToken = request.headers.get('X-MS-TOKEN-AAD-ACCESS-TOKEN', "")
         filter = generateFilterString(userToken)
+        ### Für Testzwecke
+        if not filter:
+            filter = f"{AZURE_SEARCH_PERMITTED_GROUPS_COLUMN}/any(g:search.in(g, 'ms-audit'))"
+            print("Filter -> ") 
+            print(filter)
+        ###
 
     body = {
         "messages": request_messages,
